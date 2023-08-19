@@ -1,83 +1,62 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is an update for the project at:
 
-# Getting Started
+     https://github.com/palmmaximilian/ReactNativeArduinoBLE
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+being a noob I wasn't going to push this code onto his.
 
-## Step 1: Start the Metro Server
+I am using a Linux OS, so the commands are for that terminal.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## React-Native side
+First thing, cloning the original project did not work for me, it ran into all sorts of issues and conflicts between packages and versions, so I followed the steps below.  Note, if you are going to try to clone this project and want to back it up to github you may need to check your git destination is not this one, use:
+       git remote -v
 
-To start Metro, run the following command from the _root_ of your React Native project:
+if it does need to be changed then use:
+       git remote set-url origin <set this bit to your git repo>
 
-```bash
-# using npm
-npm start
+If you do clone this do not forget to change your sdk path, and to also run:
+      npm install --save
 
-# OR using Yarn
-yarn start
-```
+Onto the code, I started a new project using my normal React-Native method:
+   npx react-native init BleExample 
 
-## Step 2: Start your Application
+I then checked that it built by starting the server   
+   npx react-native start
+and loading it onto my phone (I don't have an emulator)
+   npx react-native run-android
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Then I started adding the dependecies and rechecking after each dependency was added, in the end I had to change npm versions and also add one extra dependency to the original code, the packages that worked/were needed were:
+   "@react-native-community/checkbox": "^0.5.16",
+    "@types/react-native-base64": "^0.2.0",
+    "react-native-base64": "^0.2.1",
+    "react-native-ble-plx": "^2.0.3"
 
-### For Android
+Yes, I added two base64's, that is intentional in resolving some issue.  Incidentally I was using: 
+   "react": "18.2.0",
+   "react-native": "0.72.4"
 
-```bash
-# using npm
-npm run android
+After I knew that the project built with the dependencies and template code I copied and pasted the code from/to App.tsx (and had to make some adjustments from the original code), and also had to copy the "Styles/styles.tsx" folder, file and code.  
 
-# OR using Yarn
-yarn android
-```
+The project then built (see build instructions above).  
 
-### For iOS
+## ESP32 side
+The oddity in the code for the ESP was the libraries, I got a conflict and it seems to be from the order of the library imports!  Also, in resolving the issue I added one extra library from the original - maybe it can be removed - I haven't bothered:
+   #include <BLE2902.h>    //added, unnecessarily ??
+   #include <BLEDevice.h>
+   #include <BLEServer.h>
+   #include <BLEUtils.h>
 
-```bash
-# using npm
-npm run ios
+Naturally, the ESP code needs to be loaded from a different window; I used the Arduino IDE, with relevant libraries installed.  
 
-# OR using Yarn
-yarn ios
-```
+## Good luck
+I hope that if you clone this project it is successful and works right out of the box for you!  
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+##  Thank you
+Thank you to palmmaximilian for taking the time to do the original code 
+     https://github.com/palmmaximilian/ReactNativeArduinoBLE
+and his Youtube post:
+     https://www.youtube.com/watch?v=erWibryA_tE
+and his website:
+     https://www.uniquelymade.de/
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-# ReactNativeBLE
-# ReactNativeBLE
-# exampleBle
-# ReactNativeBLEapp
+     
+##  Happy Coding!
