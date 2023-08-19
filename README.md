@@ -19,9 +19,10 @@ If you do clone this do not forget to change your sdk path, and to also run:
 Onto the code, I started a new project using my normal React-Native method:
    npx react-native init BleExample 
 
-I then checked that it built by starting the server   
+I then checked that it built by starting the server:   
    npx react-native start
-and loading it onto my phone (I don't have an emulator)
+   
+and loading it onto my phone (I don't have an emulator):
    npx react-native run-android
 
 Then I started adding the dependecies and rechecking after each dependency was added, in the end I had to change npm versions and also add one extra dependency to the original code, the packages that worked/were needed were:
@@ -30,11 +31,13 @@ Then I started adding the dependecies and rechecking after each dependency was a
     "react-native-base64": "^0.2.1",
     "react-native-ble-plx": "^2.0.3"
 
+Check how to install the packages at:   https://www.npmjs.com/
+
 Yes, I added two base64's, that is intentional in resolving some issue.  Incidentally I was using: 
    "react": "18.2.0",
    "react-native": "0.72.4"
 
-After I knew that the project built with the dependencies and template code I copied and pasted the code from/to App.tsx (and had to make some adjustments from the original code), and also had to copy the "Styles/styles.tsx" folder, file and code.  
+After I knew that the project built with the dependencies and template code I copied and pasted the code from/to 'App.tsx' (and had to make some adjustments from the original code), and also had to copy the "Styles/styles.tsx" folder, file and code.  
 
 The project then built (see build instructions above).  
 
