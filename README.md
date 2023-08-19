@@ -47,6 +47,13 @@ The oddity in the code for the ESP was the libraries, I got a conflict and it se
 
 Naturally, the ESP code needs to be loaded from a different window; I used the Arduino IDE, with relevant libraries installed.  
 
+Remember, if you change the name of the name of the ESP32 at the line:
+         // Create the BLE Device
+         BLEDevice::init("YOUR ESP NAME HERE");
+Then you must change the target name in the APP code: 
+      if (scannedDevice && scannedDevice.name == 'YOUR ESP NAME HERE') {
+
+
 ## Good luck
 I hope that if you clone this project it is successful and works right out of the box for you!  
 
